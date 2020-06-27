@@ -1,9 +1,10 @@
 import React from 'react'
 import { Helmet } from "react-helmet"
 import { useSelector } from 'react-redux'
+import Skeleton from '@material-ui/lab/Skeleton';
 
 const ArticleShowPage = (props) => {
-    const articleId = props.match.params.id
+    // const articleId = props.match.params.id
     const articleSlug = props.match.params.id.split("-").join(" ")
 
     const article = useSelector(state => state.content.articles).filter(article => article.articleTitle === articleSlug)[0]
@@ -19,11 +20,11 @@ const ArticleShowPage = (props) => {
                         content={article.articleDescription}
                     />
                 </Helmet>
+                <img src="#" alt="abc" />
                 <h1>
                     {article.articleTitle}
                 </h1>
                 <article 
-                    // className="content_body"
                     dangerouslySetInnerHTML={{ __html: article.articleContent }}
                 />
             </>)
@@ -42,6 +43,7 @@ const ArticleShowPage = (props) => {
                 </Helmet>
                 <div>
                     loading
+                    <Skeleton variant="rect" width={210} height={118} />
                 </div>
             </>
         )

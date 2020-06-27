@@ -40,7 +40,6 @@ let subCount;
 props.type === 'random'? subCount = 180 : subCount= 80
 
   return (
-    // <Grid item xs={12} md={12} spacing={2}>
     <CardActionArea className={classes.extraCardSpacing} component="a" href={`/article/${formmatUrl(post.articleTitle)}`}>
       <Card className={classes.card}>
         <Hidden xsDown>
