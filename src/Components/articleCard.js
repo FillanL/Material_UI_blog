@@ -29,15 +29,14 @@ const useStyles = makeStyles({
 });
 
 const ArticleCard = (props) => {
-
   const formmatUrl = (articleTitle)=>{
     return articleTitle.split(" ").join("-")
   }
+  const classes = useStyles();
+  const {post } = props
 
-const classes = useStyles();
-const {post } = props
-let subCount;
-props.type === 'random'? subCount = 180 : subCount= 80
+  let subCount;
+  props.type === 'random'? subCount = 180 : subCount= 80
 
   return (
     <CardActionArea className={classes.extraCardSpacing} component="a" href={`/article/${formmatUrl(post.articleTitle)}`}>

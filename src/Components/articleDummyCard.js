@@ -14,7 +14,7 @@ const articleDummyCard = (props) => {
                 </Grid>
                 <Grid item xs={12} md={8}>
                     <Box pt={0.5}>
-                        <Skeleton animation="wave" />
+                        <Skeleton style={{"marginBottom":"10px"}} variant="text" animation="wave" />
                         <Skeleton animation="wave" />
                         <Skeleton animation="wave" />
                         <Skeleton animation="wave" width="60%" />

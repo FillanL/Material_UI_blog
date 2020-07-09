@@ -74,6 +74,9 @@ function NewArticleForm(props) {
                 />
                 <button className="submitBtn" onClick={() => submitForm()} >Submit</button>
             </div>
+            {/* <div>
+                {articleObj ? articleObj : null}
+            </div> */}
         </div>
     )
 }

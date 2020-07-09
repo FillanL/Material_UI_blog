@@ -1,6 +1,6 @@
 import axios from "axios"
 
-let baseURL = "http://localhost:3004"
+const baseURL = "http://localhost:3004"
 
 export const getArticles = () => async dispatch =>{
     await axios.get(`${baseURL}/articles`)
@@ -12,6 +12,7 @@ export const getArticles = () => async dispatch =>{
 }
 
 export const postArticle = (article) => {
+    
     return axios.post(`${baseURL}/articles`, article)
         .then(res => res.data)
         .then(res => console.log(res))
