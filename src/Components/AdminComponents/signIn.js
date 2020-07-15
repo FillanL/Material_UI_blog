@@ -52,6 +52,8 @@ const SignIn = () => {
 
   const classes = useStyles();
   const [userState, setUserState] = useState(initialState)
+  const [match, setMatchState] = useState(true)
+
 
   const submitUser =(e)=>{
     e.preventDefault() 
@@ -80,6 +82,8 @@ const SignIn = () => {
               label="username"
               name="userName"
               autoFocus
+              // pattern ="[a-zA-Z0-9]"
+              // inputProps={{ pattern: "[a-zA-Z0-9]" }}
               value={userState.userName}
               onChange={(e)=>setUserState({...userState,[e.target.name]: e.target.value})}
             />
@@ -92,8 +96,15 @@ const SignIn = () => {
               label="Password"
               type="password"
               id="password"
+              // inputProps={{ pattern: "[a-zA-Z1-9]" }}
               value={userState.pass}
-              onChange={(e)=>setUserState({...userState,[e.target.name]: e.target.value})}
+              onChange={(e)=>{
+                setUserState({...userState,[e.target.name]: e.target.value})
+                e.target.value.match("[a-zA-Z]") ? setMatchState(false): setMatchState(true)
+                console.log(e.target.value.match("/a-zA-Z/"))
+              }
+                // setMatchState()
+              }
               
               />
             <FormControlLabel
@@ -106,6 +117,7 @@ const SignIn = () => {
               variant="contained"
               color="primary"
               className={classes.submit}
+              disabled={match}
               >
               Sign In
             </Button>

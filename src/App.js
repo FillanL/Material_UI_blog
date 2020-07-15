@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React,{useEffect, Suspense} from 'react';
 import {Route, Switch} from 'react-router-dom'
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {fab} from '@fortawesome/free-brands-svg-icons'
@@ -9,7 +9,7 @@ import {getArticles} from './Services/articleRestServices'
 
 import Nav from './Containers/mainNav'
 import Home from './Containers/home'
-import Footer from './Containers/footer'
+// import Footer from './Containers/footer'
 import ArticleShowPage from './Components/articleShowPage';
 import SignIn from './Components/AdminComponents/signIn'
 import ErrorPage from './Components/errorPage';
@@ -18,6 +18,7 @@ import PrivacyPolicy from './Components/privacyPolicy'
 import newArticleForm from './Components/newArticleForm'
 import Dashboard from './Components/AdminComponents/dashBoard';
 import './App.css';
+const Footer = React.lazy(() => import('./Containers/footer'))
 
 library.add(fab, faBars)
 
@@ -49,7 +50,10 @@ function App() {
             <Route exact path="*" component={ErrorPage} />
           </Switch>
         </div>
-      <Footer/>
+        <Suspense fallback={<div>Loading...</div>}>
+          {/* <OtherComponent /> */}
+        <Footer/>
+      </Suspense>
     </div>
   );
 }

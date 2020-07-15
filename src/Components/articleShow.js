@@ -7,6 +7,8 @@ const ArticleShow = (props) => {
     const articleId = props.match.params.id
     console.log(props, "here")
     const article = useSelector(state => state.content.articles).filter(article => article._id === articleId)[0]
+
+    const scollToTop = ()=> window.scrollTo({top:0,left: 0,behavior:"smooth"})
     
     const layout = () => {
         console.log("chvmb,")
@@ -30,6 +32,7 @@ const ArticleShow = (props) => {
                     className="content_body"
                     dangerouslySetInnerHTML={{ __html: article.articleContent }}
                 />
+
             </>)
         } else {
             return (
