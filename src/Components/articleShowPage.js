@@ -3,6 +3,9 @@ import { Helmet } from "react-helmet"
 import { useSelector } from 'react-redux'
 import Skeleton from '@material-ui/lab/Skeleton';
 
+// style
+import '../CSS/showPage.scss'
+
 const ArticleShowPage = (props) => {
     // const articleId = props.match.params.id
     const articleSlug = props.match.params.id.split("-").join(" ")
@@ -10,7 +13,8 @@ const ArticleShowPage = (props) => {
     const article = useSelector(state => state.content.articles).filter(article => article.articleTitle === articleSlug)[0]
     const layOut = () => {
         if (article) {
-            return (<>
+            return (
+            <div className="show-page">
                 <Helmet>
                     <title>
                         {article.articleTitle}
@@ -20,14 +24,21 @@ const ArticleShowPage = (props) => {
                         content={article.articleDescription}
                     />
                 </Helmet>
-                <img src="#" alt="abc" />
-                <h1>
+
+                <img style={{"maxWidth":"100vw"}} src={`http://localhost:3004/articles/images/${article.articleImgUrl}`} alt="abc" />
+                <h1 style={{"textAlign":"center", "width":"50%", "margin":"0 auto", "fontSize":"45px"}}>
                     {article.articleTitle}
                 </h1>
-                <article 
-                    dangerouslySetInnerHTML={{ __html: article.articleContent }}
-                />
-            </>)
+                <div className="content-section">
+                    <article 
+                        dangerouslySetInnerHTML={{ __html: article.articleContent }}
+                    />
+                    <div className="side-bar" > 
+                    </div>
+                </div>
+                <div className="bottom-ad-banner" > 
+                </div>
+            </div>)
         }
 
         return (

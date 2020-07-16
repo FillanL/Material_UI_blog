@@ -27,7 +27,7 @@ function App() {
   useEffect(() => {
       dispatch(getArticles())
   }, [dispatch])
-  const check = false
+  const check = true
 
 //   useEffect(() => {
 //     console.log("asdn munt")
