@@ -14,6 +14,7 @@ import SideBar from '../Components/sideBar';
 import RandomPost from '../Components/randomPost'
 import FeatedArticles from '../Components/featedArticles';
 import '../CSS/home.scss'
+// import "../Images/Default.png"
 
 const useStyles = makeStyles((theme) => ({
     mainGrid: {
@@ -37,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
         position: 'relative',
         color: theme.palette.common.white,
         minHeight: '100%',
-        backgroundImage: 'url(http://localhost:3004/articles/images/article-1591146651634.png)',
+        // backgroundImage: 'url(http://localhost:3004/articles/images/article-1591146651634.png)',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
@@ -69,7 +70,7 @@ const Home = (props) => {
         title: 'Title of a longer featured blog post',
         description:
             "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
-        image: 'http://localhost:3004/articles/images/article-1591146651634.png',
+        // image: Default,
         imgText: 'main image description',
         linkText: 'Continue reading…',
     };
