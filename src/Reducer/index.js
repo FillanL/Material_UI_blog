@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 import articleReducer from './articleReducer'
-// import campaignsReducer from './campaignsReducer';
+import authReducer from './authReducer'
 // import userReducer from './userReducer';
 
 export default combineReducers({
-    content: articleReducer
-    // user: userReducer
+    content: articleReducer,
+    auth: authReducer
 })

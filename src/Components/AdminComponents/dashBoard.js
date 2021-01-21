@@ -1,9 +1,10 @@
 import React from 'react';
 import clsx from 'clsx';
+import { useHistory } from 'react-router-dom';
+
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
-import Box from '@material-ui/core/Box';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
@@ -15,10 +16,10 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import FormatAlignLeftIcon from '@material-ui/icons/FormatAlignLeft';
-import MenuIcon from '@material-ui/icons/Menu';
+// import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import { secondaryListItems } from './dashBoardNav';
+// import { secondaryListItems } from './dashBoardNav';
 import Orders from './recentArticles';
 import NewArticleForm from '../newArticleForm';
 
@@ -29,9 +30,7 @@ import ListItem from '@material-ui/core/ListItem';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import GridOnIcon from '@material-ui/icons/GridOn';
 
-
 const drawerWidth = 240;
-
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -108,14 +107,14 @@ const useStyles = makeStyles((theme) => ({
     },
     fixedHeight: {
         height: 240,
-    },
+    }
 }));
 
 const Dashboard = () => {
     const classes = useStyles();
     const [page, setPage] = React.useState('dashBoard')
-
-    const [open, setOpen] = React.useState(true)
+    const [open, setOpen] = React.useState(false)
+    const history = useHistory();
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -123,29 +122,34 @@ const Dashboard = () => {
     const handleDrawerClose = () => {
         setOpen(false);
     };
-    //   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+    const handleLogOut = (e) =>{
+        const userStore = sessionStorage.getItem("xMiniUserMal")
+        console.log("logout",userStore)
+        if(userStore) sessionStorage.removeItem("xMiniUserMal")
+        setTimeout(() => {    
+            history.push("/admin/login")
+        }, 5000);
+    }
+      
     console.log(page)
     return (
         <div className={classes.root}>
             <CssBaseline />
-            <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+            <AppBar position="absolute" className={clsx(classes.appBar)}
+            >
                 <Toolbar className={classes.toolbar}>
-                    <IconButton
-                        edge="start"
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={handleDrawerOpen}
-                        className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
-                    >
-                        <MenuIcon />
-                    </IconButton>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
                         Dashboard
-            </Typography>
+                    </Typography>
                     <IconButton color="inherit">
-                        <Badge badgeContent={7} color="secondary">
+                        <Badge badgeContent={0} color="secondary">
                             <NotificationsIcon />
                         </Badge>
+                    </IconButton>
+                    <IconButton color="inherit" onClick={(e)=>handleLogOut(e)}>
+                    <Typography component="p" >
+                        Logout
+                    </Typography>
                     </IconButton>
                 </Toolbar>
             </AppBar>
@@ -156,7 +160,9 @@ const Dashboard = () => {
                 }}
                 open={open}>
                 <div className={classes.toolbarIcon}>
-                    <IconButton onClick={handleDrawerClose}>
+                    <IconButton 
+                    onClick={open ? handleDrawerClose :handleDrawerOpen}
+                    >
                         <ChevronLeftIcon />
                     </IconButton>
                 </div>
@@ -182,16 +188,15 @@ const Dashboard = () => {
                     </ListItem>
                 </List>
                 <Divider />
-                <List>{secondaryListItems}</List>
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
                 <Container maxWidth="lg" className={classes.container}>
                     <Grid container spacing={3}>
-                        {/* Recent Orders */}
                         <Grid item xs={12}>
                             <Paper className={classes.paper}>
-                                {page === 'createArticle' ?
+                                {
+                                page === 'createArticle' ?
                                     <NewArticleForm /> :
                                 page === 'dashBoard' ?
                                     <Orders /> :
@@ -200,9 +205,6 @@ const Dashboard = () => {
                             </Paper>
                         </Grid>
                     </Grid>
-                    <Box pt={4}>
-                        {/* <Copyright /> */}
-                    </Box>
                 </Container>
             </main>
         </div>

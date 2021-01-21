@@ -26,9 +26,9 @@ export default function Orders() {
         if(articleCount < articles.length) return 1 
         return 0
     }
+    
+    const classes = useStyles();
     console.log(articleCount)
-
-  const classes = useStyles();
   return (
     <React.Fragment>
       <Typography component="h2" variant="h6" color="primary" gutterBottom>

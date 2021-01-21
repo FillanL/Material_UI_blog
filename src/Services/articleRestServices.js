@@ -16,6 +16,9 @@ export const postArticle = (article) => {
     return axios.post(`${baseURL}/articles`, article)
         .then(res => res.data)
         .then(res => console.log(res))
+        .catch(error=>{
+            console.log(error)
+        })
 }
 
 export const updateArticle = (article) => async dispatch => {

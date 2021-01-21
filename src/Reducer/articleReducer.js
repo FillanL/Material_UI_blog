@@ -3,7 +3,7 @@ const initialState = {
     articles: []
 };
 
-export default function (state = initialState, action) {
+export default function articleReducer(state = initialState, action) {
     switch (action.type) {
         case "GET_ARTICLES":
             return {
@@ -13,7 +13,7 @@ export default function (state = initialState, action) {
             case "DELETE_ARTICLE":
             return {
                 ...state,
-                articles: state.articles.filter(article=> article._id !== action.payload)
+                articles: state.articles.filter(article => article._id !== action.payload)
             };
         default:
             return state;

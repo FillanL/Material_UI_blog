@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import SideBar from '../Components/sideBar';
 import RandomPost from '../Components/randomPost'
 import FeatedArticles from '../Components/featedArticles';
+import '../CSS/home.scss'
 
 const useStyles = makeStyles((theme) => ({
     mainGrid: {
@@ -36,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
         position: 'relative',
         color: theme.palette.common.white,
         minHeight: '100%',
-        backgroundImage: 'url(https://source.unsplash.com/random)',
+        backgroundImage: 'url(http://localhost:3004/articles/images/article-1591146651634.png)',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
@@ -62,29 +63,17 @@ const useStyles = makeStyles((theme) => ({
 const Home = (props) => {
     const articles = useSelector(state => state.content.articles[3])
     // console.log(articles)
-    
+
     const classes = useStyles();
     const mainFeaturedPost = {
         title: 'Title of a longer featured blog post',
         description:
             "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
-        image: 'https://source.unsplash.com/random',
+        image: 'http://localhost:3004/articles/images/article-1591146651634.png',
         imgText: 'main image description',
         linkText: 'Continue reading…',
     };
-    //   const { sections, title } = props;
-    // const sections = [
-    //     { title: 'Technology', url: '#' },
-    //     { title: 'Design', url: '#' },
-    //     // { title: 'Culture', url: '#' },
-    //     { title: 'Business', url: '#' },
-    //     { title: 'Politics', url: '#' },
-    //     // { title: 'Opinion', url: '#' },
-    //     { title: 'Science', url: '#' },
-    //     { title: 'Health', url: '#' },
-    //     // { title: 'Style', url: '#' },
-    //     { title: 'Travel', url: '#' },
-    // ];
+
     return (
         <React.Fragment>
             <CssBaseline />
@@ -99,23 +88,9 @@ const Home = (props) => {
             </Helmet>
 
             <Container maxWidth="lg">
-                {/* <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
-                    {sections.map((section) => (
-                        <Link
-                            color="inherit"
-                            noWrap
-                            key={section.title}
-                            variant="body2"
-                            href={section.url}
-                            className={classes.toolbarLink}
-                        >
-                            {section.title}
-                        </Link>
-                    ))}
-                </Toolbar> */}
-                <Grid item xs={12} md={12} container spacing={2} className={classes.featGrind}>
+                <Grid item xs={12} md={12} container spacing={2} className={`${classes.featGrind} mini`}>
                     <Grid item xs={12} md={7} >
-                        <Paper className={classes.mainFeaturedPost} style={{ backgroundImage: `url(${articles !== undefined ? "http://localhost:3004/articles/images/" + articles.articleImgUrl : mainFeaturedPost.image})` }}>
+                        <Paper className={`${classes.mainFeaturedPost}`} style={{ backgroundImage: `url(${articles !== undefined ? "http://localhost:3004/articles/images/" + articles.articleImgUrl : mainFeaturedPost.image})` }}>
                             <div className={classes.overlay} />
                             <Grid container item xs={12} md={8} >
                                 <Grid item xs={12} md={8} >

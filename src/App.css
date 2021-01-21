@@ -42,6 +42,9 @@ footer {
   margin-top:calc(5% + 60px);
   bottom: 0;
 }
+div.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-2.MuiGrid-item.MuiGrid-grid-xs-12.MuiGrid-grid-md-12{
+  margin: 0;
+}
 
 @keyframes App-logo-spin {
   from {

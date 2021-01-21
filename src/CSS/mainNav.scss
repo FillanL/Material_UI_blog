@@ -1,17 +1,21 @@
 nav {
+//     position: -webkit-sticky; /* Safari */
+//   position: sticky;
+//   top: 0;
+    
     height: 50px;
     background-color: white;
     max-width: 100vw;
     line-height: 1.5;
     font-size: 16px;
-    position: relative;
+    // position: relative;
     display: grid;
     grid-template-columns: 40% repeat(1, 60%);
     margin-bottom: 20px;
     box-shadow: 0 1px 7px rgba(94, 96, 110, 0.199);
-    .grid-90-10{
+    .grid-10-90{
         display: grid;
-        grid-template-columns: 90% 10%;
+        grid-template-columns: 10% 90%;
         .mobile-burger{
             display: none;
             background-color: azure;
@@ -49,11 +53,15 @@ nav {
 }
 
 @media(max-width:870px) {
+    nav .main-nav{
+        position: -webkit-sticky; /* Safari */
+        position: sticky;
+        top: 0;
+    }
     nav {
-        display: block;
         height: auto;
         grid-template-columns: 100%;
-        .grid-90-10{
+        .grid-10-90{
             padding: 10px;
             .mobile-burger{
                 display: block;

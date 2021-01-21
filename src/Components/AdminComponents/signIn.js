@@ -1,23 +1,23 @@
 import React,{useState} from 'react';
+import { useDispatch} from 'react-redux'
+
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
-import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import {createUser, logInUser} from '../../Services/userServices'
+import {logInUser} from '../../Services/userServices'
+import {refresh} from '../../Services/userServices'
 
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
   },
   image: {
-    backgroundImage: 'url(https://source.unsplash.com/random)',
+    backgroundImage: 'url(http://localhost:3004/articles/images/article-1591146651634.png)',
     backgroundRepeat: 'no-repeat',
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
@@ -52,17 +52,17 @@ const SignIn = () => {
 
   const classes = useStyles();
   const [userState, setUserState] = useState(initialState)
-  const [match, setMatchState] = useState(true)
+  const dispatch = useDispatch() 
 
 
-  const submitUser =(e)=>{
+  const handleLogin = async(e)=>{
     e.preventDefault() 
-    // console.log(userState)
-    // createUser(userState)
-    logInUser(userState)
+      dispatch(
+    logInUser(userState))
     setUserState(initialState)
+    console.log("mmmm")
   }
-
+console.log(userState)
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -70,9 +70,9 @@ const SignIn = () => {
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Typography component="h1" variant="h5">
-            Sign in
+            SIGN IN
           </Typography>
-          <form onSubmit={(e) =>submitUser(e)} className={classes.form} noValidate>
+          <form onSubmit={(e) =>handleLogin(e)} className={classes.form} noValidate>
             <TextField
               variant="outlined"
               margin="normal"
@@ -82,8 +82,6 @@ const SignIn = () => {
               label="username"
               name="userName"
               autoFocus
-              // pattern ="[a-zA-Z0-9]"
-              // inputProps={{ pattern: "[a-zA-Z0-9]" }}
               value={userState.userName}
               onChange={(e)=>setUserState({...userState,[e.target.name]: e.target.value})}
             />
@@ -96,47 +94,31 @@ const SignIn = () => {
               label="Password"
               type="password"
               id="password"
-              // inputProps={{ pattern: "[a-zA-Z1-9]" }}
               value={userState.pass}
               onChange={(e)=>{
                 setUserState({...userState,[e.target.name]: e.target.value})
-                e.target.value.match("[a-zA-Z]") ? setMatchState(false): setMatchState(true)
-                console.log(e.target.value.match("/a-zA-Z/"))
-              }
-                // setMatchState()
-              }
-              
-              />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-              />
+              }}
+            />
             <Button
               type="submit"
               fullWidth
               variant="contained"
               color="primary"
               className={classes.submit}
-              disabled={match}
               >
               Sign In
             </Button>
             <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/admin/signup" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
             </Grid>
-            <Box mt={5}>
-              {/* <Copyright /> */}
-            </Box>
           </form>
+            <button onClick={()=>refresh()}>
+                testRefresh
+            </button>
         </div>
       </Grid>
     </Grid>
