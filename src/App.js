@@ -27,8 +27,8 @@ function App() {
   const dispatch = useDispatch() 
   useEffect(() => {
       dispatch(getArticles())
-      refresh()
-      console.log("hello called")
+      // refresh()
+      // console.log("hello called")
   }, [dispatch])
   const check = true
 

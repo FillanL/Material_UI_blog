@@ -53,9 +53,9 @@ const initialState = {
 const matchPasswordInitalState = {
   "password":""
 }
-const errorInit ={
-  "responseError":null,
-}
+// const errorInit ={
+//   "responseError":null,
+// }
  
 const Signup = () => {
 
