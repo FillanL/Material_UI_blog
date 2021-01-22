@@ -47,8 +47,8 @@ function App() {
               <Route exact path="/dash" component={Dashboard} /> 
               : null
             }
-            <Route exact path="/admin/login" component={SignIn} />
-            <Route exact path="/admin/signup" component={Signup} />
+            <Route exact path="/login" component={SignIn} />
+            <Route exact path="/signup" component={Signup} />
             <Route exact path="/dash/create-article" component={newArticleForm} />
             <Route exact path="/privacy-policy" component={PrivacyPolicy} />
             <Route exact path="*" component={ErrorPage} />
