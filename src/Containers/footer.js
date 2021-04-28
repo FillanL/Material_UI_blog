@@ -1,42 +1,10 @@
 import React from 'react';
 import styled from "styled-components"
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
-// import Link from '@material-ui/core/Link';
 
-// function Copyright() {
-//   return (
-//     <Typography variant="body2" color="textSecondary" align="center">
-//       {'Copyright © '}
-//       <Link color="inherit" href="https://material-ui.com/">
-//         Your Website
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   );
-// }
-
-const useStyles = makeStyles((theme) => ({
-	footer: {
-		// backgroundColor: theme.palette.background.paper,
-		padding: theme.spacing(3, 2),
-		marginTop: 'auto',
-		backgroundColor:
-			theme.palette.type === 'light'
-				? theme.palette.grey[200]
-				: theme.palette.grey[800],
-	},
-}));
 const Footer = (props) => {
-	const classes = useStyles();
-	// const { description, title } = props;
 
 	return (
-		<footer className={classes.footer}>
-			<Container maxWidth="sm">
-        {/* <IconHolder> */}
+		<FooterContainer >
 
 				<svg
 					width="165"
@@ -54,20 +22,16 @@ const Footer = (props) => {
 						fill="#A9A6B5"
 					/>
 				</svg>
-        {/* </IconHolder> */}
 
-				<Typography variant="body1">
-					My sticky footer can be found here.
-				</Typography>
-				{/* <Copyright /> */}
-			</Container>
-		</footer>
+				
+		</FooterContainer>
 	);
 };
 
 export default Footer;
 
-const IconHolder = styled.div`
-  width:200px;
-  height:250px;
+const FooterContainer = styled.footer`
+  width:100vw;
+  padding:20px;
+  background-color: gray;
 `

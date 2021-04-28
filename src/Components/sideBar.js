@@ -10,14 +10,14 @@ const useStyles = makeStyles((theme) => ({
 		padding: theme.spacing(1),
 		marginBottom: '15px',
 		backgroundColor: '#3d405b',
-		color: 'white'
+		color: 'white',
 	},
 	sidebarSection: {
 		marginTop: theme.spacing(3),
 	},
-    center: {
-        margin: "auto"
-    }
+	center: {
+		margin: '15px auto',
+	},
 }));
 
 const SideBar = (props) => {
@@ -48,5 +48,5 @@ const SideBar = (props) => {
 export default SideBar;
 const AboutUs = styled.div`
 	padding: 15px 30px;
-    font-size: 10px;
+	font-size: 10px;
 `;

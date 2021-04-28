@@ -5,13 +5,10 @@ import { useSelector } from 'react-redux';
 import Skeleton from '@material-ui/lab/Skeleton';
 import Breakpoint from '../styles/Responsive';
 
-// style
 import '../CSS/showPage.scss';
 
 const ArticleShowPage = (props) => {
-	// const articleId = props.match.params.id
 	const articleSlug = props.match.params.id.split('-').join(' ');
-
 	const article = useSelector((state) => state.content.articles).filter(
 		(article) => article.articleTitle === articleSlug
 	)[0];
@@ -62,7 +59,7 @@ const ArticleTitle = styled.h1`
 	width: 50%auto;
 	margin: 0 auto;
 	font-size: 36px;
-	padding: 50px 0px 30px;
+	padding: 40px 0px 20px;
 	text-align: center;
 	text-transform: capitalize;
 	font-family: 'Lora', serif;
@@ -72,12 +69,12 @@ const ArticleImage = styled.img`
 	height: 100px;
 	max-width: 100vw;
 	${Breakpoint.xs} {
-        height:200px;
+		height: 200px;
 	}
-    ${Breakpoint.sm} {
-        height:350px;
+	${Breakpoint.sm} {
+		height: 350px;
 	}
-    ${Breakpoint.lg} {
-        height:400px;
+	${Breakpoint.lg} {
+		height: 400px;
 	}
 `;

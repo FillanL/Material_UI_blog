@@ -35,8 +35,6 @@ const RandomPost = () => {
 			</Grid>
 		);
 	};
-	// }
-
 	return <>{layout()}</>;
 };
 
